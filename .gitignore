@@ -20,5 +20,8 @@
 # Ignore Byebug command history file.
 .byebug_history
 
-" Ignore ctags file
+# Ignore ctags file
 tags
+
+# Ignore environment file
+.env

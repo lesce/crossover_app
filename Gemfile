@@ -29,15 +29,17 @@ gem 'mysql2'
 group :development, :test do
   # Call 'binding.pry' anywhere in the code to stop execution and get a debugger console
   gem 'pry'
+  gem 'pry-nav'
   gem 'listen', '~> 3.0.5'
   gem 'dotenv-rails'
+  gem 'annotate'
 end
 
 group :test do
   # Use rspec test framework for unit and integration testing 
   gem 'rspec-rails', '~> 3.5'
   # User factory girl for managing test fixtures
-  gem "factory_girl_rails", "~> 4.0"
+  gem 'factory_girl_rails', '~> 4.0'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

@@ -7,7 +7,8 @@
 #  encrypted_password     :string(255)      default(""), not null
 #  first_name             :string(255)      not null
 #  last_name              :string(255)      not null
-#  role                   :integer          default("1"), not null
+#  role                   :integer          default("0"), not null
+#  authentication_token   :string(255)      not null
 #  reset_password_token   :string(255)
 #  reset_password_sent_at :datetime
 #  remember_created_at    :datetime
@@ -26,9 +27,11 @@
 #
 
 class User < ApplicationRecord
+  include Authority::UserAbilities
+
   # constants
-  DEFAULT_ROLE = 1
-  ADMIN_ROLE = 0
+  DEFAULT_ROLE = 0
+  ADMIN_ROLE = 1
 
   enum role: { admin: ADMIN_ROLE, default: DEFAULT_ROLE }
 
@@ -41,16 +44,30 @@ class User < ApplicationRecord
 
   # callbacks
   before_save :set_default_role
+  before_save :set_auth_token
 
   # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
+  # :confirmable, :rememberable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :validatable, :trackable
 
   private
 
   def set_default_role
     return if self.role.present?
     self.default!
+  end
+  
+  def set_auth_token
+    if authentication_token.blank?
+      self.authentication_token = generate_authentication_token
+    end
+  end
+
+  def generate_authentication_token
+    loop do
+      token = Devise.friendly_token
+      break token unless User.where(authentication_token: token).first
+    end
   end
 end

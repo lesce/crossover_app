@@ -25,6 +25,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise'
 # Use mysql2 db adapter
 gem 'mysql2'
+# Use authority for authorization purpose
+gem 'authority'
 
 group :development, :test do
   # Call 'binding.pry' anywhere in the code to stop execution and get a debugger console

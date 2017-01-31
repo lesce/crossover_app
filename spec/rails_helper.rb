@@ -26,8 +26,17 @@ require 'rspec/rails'
 # If you are not using ActiveRecord, you can remove this line.
 ActiveRecord::Migration.maintain_test_schema!
 
+module ApiHelper
+  include Rack::Test::Methods
+
+  def app
+    Rails.application
+  end
+end
+
 RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
+  config.include ApiHelper, type: :api
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   # config.fixture_path = "#{::Rails.root}/spec/fixtures"
 

@@ -7,7 +7,8 @@
 #  encrypted_password     :string(255)      default(""), not null
 #  first_name             :string(255)      not null
 #  last_name              :string(255)      not null
-#  role                   :integer          default("1"), not null
+#  role                   :integer          default("0"), not null
+#  authentication_token   :string(255)      not null
 #  reset_password_token   :string(255)
 #  reset_password_sent_at :datetime
 #  remember_created_at    :datetime
@@ -27,7 +28,7 @@
 
 require 'rails_helper'
 
-RSpec.describe User, :type => :model do
+describe User, type: :model do
 
   it "requires email address" do
     user = User.create email: nil
@@ -68,5 +69,10 @@ RSpec.describe User, :type => :model do
   it "has an admin role" do
     user = create :admin
     expect(user.admin?).to eq(true)
+  end
+
+  it "has an authentication token" do
+    user = create :admin
+    expect(user.authentication_token.present?).to eq(true)
   end
 end

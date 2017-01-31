@@ -18,7 +18,7 @@
 
 require 'rails_helper'
 
-RSpec.describe Ticket, :type => :model do
+describe Ticket, type: :model do
 
   it "requires title" do
     ticket = Ticket.create title: nil

@@ -17,6 +17,8 @@
 #
 
 class Ticket < ApplicationRecord
+  include Authority::Abilities
+
   # constants
   OPEN = 0
   INPROGRESS = 1

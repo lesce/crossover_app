@@ -42,6 +42,8 @@ GEM
       activerecord (>= 2.3.0)
       rake (>= 0.8.7)
     arel (7.1.4)
+    authority (3.2.2)
+      activesupport (>= 3.0.0)
     bcrypt (3.1.11)
     builder (3.2.3)
     coderay (1.1.1)
@@ -188,6 +190,7 @@ PLATFORMS
 
 DEPENDENCIES
   annotate
+  authority
   devise
   dotenv-rails
   factory_girl_rails (~> 4.0)

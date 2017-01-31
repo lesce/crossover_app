@@ -21,7 +21,12 @@ class TicketAuthorizer < ApplicationAuthorizer
     user.admin? || resource.user_id == user.id
   end
 
+  # Users can delete tickets only if the status hasn't changed
   def deletable_by?(user)
-    user.admin? || resource.user_id == user.id
+    resource.user_id == user.id && resource.open?
+  end
+
+  def moveable_by?(user)
+    user.admin?
   end
 end

@@ -4,8 +4,7 @@ class Api::V1::ApiController < ApplicationController
   protected
 
   def authority_forbidden(error)
-    Authority.logger.warn(error.message)
-    render json: { message: 'You are not authorized to complete that action.', status: 401 }
+    render json: { message: 'You are not authorized to complete that action.', status: 403 }
   end
 
   def authenticate_user_from_token

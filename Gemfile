@@ -27,6 +27,8 @@ gem 'devise'
 gem 'mysql2'
 # Use authority for authorization purpose
 gem 'authority'
+# User ActiveModel::Serializer for formating JSON api response
+gem 'active_model_serializers', '~> 0.10.0'
 
 group :development, :test do
   # Call 'binding.pry' anywhere in the code to stop execution and get a debugger console

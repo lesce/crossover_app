@@ -35,6 +35,9 @@ class Ticket < ApplicationRecord
   # callbacks
   before_save :set_default_status
 
+  # scopes
+  scope :filter_by_user_role, -> (user) { user.admin? ? self : where(user_id: user.id) } 
+
   private
 
   def set_default_status

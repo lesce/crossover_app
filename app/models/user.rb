@@ -28,6 +28,7 @@
 
 class User < ApplicationRecord
   include Authority::UserAbilities
+  include Authority::Abilities
 
   # constants
   DEFAULT_ROLE = 0

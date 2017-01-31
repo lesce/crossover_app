@@ -1,19 +1,14 @@
 class UserAuthorizer < ApplicationAuthorizer
   # Every admin user can read and update normal users
-  def self.default
+  def self.default(able, user)
     user.admin?
-  end
-
-  def self.createable_by?(user)
-    false
-  end
-
-  def self.deletable_by?(user)
-    false
   end
 
   def readable_by?(user)
-    user.admin?
+    user.admin? && resource.default?
   end
 
+  def updateable_by?(user)
+    user.admin? && resource.default?
+  end
 end

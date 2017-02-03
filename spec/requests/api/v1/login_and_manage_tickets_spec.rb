@@ -19,6 +19,14 @@ describe "login and query ticket endpoints", :type => :request do
       expect(response_json['email']).to eq(user.email)
     end
 
+    it "responds successfully with 401 Unauthorized" do
+      post user_session_path,
+        params: { user: { email: 'fail@test.com', password: SecureRandom.hex }}.to_json,
+        headers: { 'content-type' => 'application/json', 'accept' => 'application/json' }
+
+      expect(response_json['success']).to eq(false)
+    end
+
     it "gets all user tickets" do
       get api_v1_tickets_path, params: { 
         email: user.email,

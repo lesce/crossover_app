@@ -1,0 +1,42 @@
+<script type="text/template" id="tickets">
+<nav class='navbar navbar-default'>
+  <div class="container-fluid">
+    <ul class="nav navbar-nav">
+      <li class="active"><a>Tickets <span class="sr-only">(current)</span></a></li>
+      <li><a href='#' class='users'>Users</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="#" class='signout'>Sign Out</a></li>
+    </ul>
+  </div>
+</nav>
+<section>
+  <div class="container-fluid">
+    <div class="row">
+      <!--div class='col-md-9'-->
+        <table class='table'>
+          <caption> Submited Tickets </caption>
+          <thead>
+            <th> Title </th>
+            <th> Content </th>
+            <th> Status </th>
+            <th> User </th>
+            <th> Actions </th>
+          </thead>
+          <tbody>
+          {{#each this}}
+            <tr>
+              <td>{{getTitle this}}</td>
+              <td>{{getContent this}}</td>
+              <td> {{getStatus this}}</td>
+              <td> {{getUsername this}}</td>
+              <td> {{getId this}}</td>
+            </tr>
+          {{/each}}
+          <tbody>
+        </table>
+      <!--/div-->
+    </div>
+  </div> 
+<section>
+</script>

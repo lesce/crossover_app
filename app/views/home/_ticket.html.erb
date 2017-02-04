@@ -6,8 +6,18 @@
           <label for="title">Ticket Subject</label>
           <input type="text" class="form-control" name="title" value="{{ getTitle this}}" /required>
         </div>
+        {{#isAdmin? this}}
+          <div class="form-group">
+            <label for="title">Status</label>
+            <select name="status" class="form-control">
+              <% Ticket.statuses.each do |status| %>
+                <option value='<%= status[0]%>' {{setSelected this '<%= status[0]%>'}}><%= status[0].humanize%></option>
+              <% end %>
+            </select>
+          </div>
+        {{/isAdmin?}}
         <div class="form-group">
-          <label for="last_name">Content</label>
+          <label for="content">Content</label>
           <textarea rows="4" cols="50" name="content"   class="form-control" /required>{{getContent this}}</textarea>
         </div>
         <button type="submit" class="btn btn-primary">Save</button>

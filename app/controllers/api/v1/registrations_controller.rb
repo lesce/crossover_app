@@ -11,6 +11,7 @@ class Api::V1::RegistrationsController < Devise::RegistrationsController
     if resource.persisted?
       render json: {
         success: true,
+        admin: resource.admin?,
         auth_token: resource.authentication_token,
         email: resource.email 
       }, status: 201

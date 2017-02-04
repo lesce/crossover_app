@@ -54,15 +54,18 @@ var Router = Backbone.Router.extend({
 
   tickets: function() {
     var tickets = new Tickets({ model: Ticket });
-    tickets.fetch().success(function(){
-      if (typeof ticketsView === 'undefined') {
-        ticketsView = new TicketsView({ collection: tickets, model: Ticket });
-      }
+    tickets.fetch().success(function(model, resp){
+      ticketsView = new TicketsView({ collection: tickets, model: Ticket });
       ticketsView.render();
     });
   },
 
   users: function() {
+    var users = new Users({ model: Ticket });
+    users.fetch().success(function(model, resp){
+      usersView = new UsersView({ collection: users, model: User });
+      usersView.render();
+    });
   },
 
 });

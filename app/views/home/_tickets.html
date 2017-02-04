@@ -3,7 +3,9 @@
   <div class="container-fluid">
     <ul class="nav navbar-nav">
       <li class="active"><a>Tickets <span class="sr-only">(current)</span></a></li>
-      <li><a href='#' class='users'>Users</a></li>
+      {{#isAdmin? this}}
+        <li><a href='#' class='users'>Users</a></li>
+      {{/isAdmin?}}
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li><a href="#" class='signout'>Sign Out</a></li>
@@ -33,11 +35,13 @@
             <tr>
               <td>{{getTitle this}}</td>
               <td>{{getContent this}}</td>
-              <td> {{getStatus this}}</td>
+              <td> {{getHumanized_status this}}</td>
               <td> {{getUsername this}}</td>
               <td> 
                 <a class='edit-ticket btn btn-warning' data-id="{{getId this}}">Edit</a>
-                <a class='remove-ticket btn btn-danger' data-id="{{getId this}}">Remove</a>
+                {{# isUser?}}
+                  <a class='remove-ticket btn btn-danger' data-id="{{getId this}}">Remove</a>
+                {{/isUser?}}
               </td>
             </tr>
           {{/each}}

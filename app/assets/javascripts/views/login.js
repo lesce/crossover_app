@@ -30,6 +30,7 @@ var LoginView = Backbone.View.extend({
     })
     .success(function(response) {
       localStorage.auth_token = response.auth_token;
+      localStorage.admin = response.admin;
       localStorage.email = response.email;
       app.navigate('tickets', {trigger: true});
     });

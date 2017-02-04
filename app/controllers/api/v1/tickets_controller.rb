@@ -57,7 +57,11 @@ class Api::V1::TicketsController < Api::V1::ApiController
   private
 
   def ticket_params
-    params.require(:ticket).permit(:title, :content)
+    if current_user.admin?
+      params.require(:ticket).permit(:title, :content, :status)
+    else
+      params.require(:ticket).permit(:title, :content)
+    end
   end
 
 end

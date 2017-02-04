@@ -89,7 +89,7 @@ describe "login and query ticket endpoints", :type => :request do
         auth_token: user.authentication_token
       }
 
-      expect(response_json['status']).to eq(403)
+      expect(response.status).to eq(403)
       expect(response_json['message']).to eq('You are not authorized to complete that action.')
     end
 
@@ -100,7 +100,7 @@ describe "login and query ticket endpoints", :type => :request do
         status: Ticket::INPROGRESS
       }
 
-      expect(response_json['status']).to eq(403)
+      expect(response.status).to eq(403)
       expect(response_json['message']).to eq('You are not authorized to complete that action.')
     end
   end

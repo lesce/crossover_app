@@ -7,6 +7,7 @@ class Api::V1::SessionsController < Devise::SessionsController
     if resource && resource.valid_password?(params[:user][:password])
       render json: {
         success: true,
+        admin: resource.admin?,
         auth_token: resource.authentication_token,
         email: resource.email 
       }

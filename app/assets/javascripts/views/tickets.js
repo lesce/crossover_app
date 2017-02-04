@@ -25,6 +25,7 @@ var TicketsView = Backbone.View.extend({
     e.preventDefault();
     localStorage.removeItem('email');
     localStorage.removeItem('auth_token');
+    localStorage.removeItem('admin');
     app.navigate('login', { trigger: true});
   },
 
@@ -45,12 +46,16 @@ var TicketsView = Backbone.View.extend({
     e.preventDefault();
     var id = $(e.currentTarget).data('id');
     var ticket = new Ticket({id: id});
-    ticket.destroy({success: this.successDestroy});
+    ticket.destroy({success: this.successDestroy, error: this.errorDestroy});
   },
 
   successFetch: function(ticket){
     var ticketView = new TicketView({model: ticket, collection: this.collection});
     ticketView.render();
+  },
+
+  errorDestroy: function(){
+    alert('You can only remove tickets that have status = open');
   },
 
   successDestroy: function(ticket){

@@ -39,9 +39,25 @@ String.prototype.capitalizeFirstLetter = function() {
 }
 
 // Handlebars helpers . Ex: getTitle , getContent ...
-_.each(['title','content','status', 'username', 'id'], function(e){
+_.each(['title','content','status', 'username', 'id', 'humanized_status', 'name', 'first_name', 'last_name', 'content', 'email', 'note'], function(e){
   var helperName = 'get' + e.capitalizeFirstLetter();
   Handlebars.registerHelper(helperName, function(val) {
     return new Handlebars.SafeString(val.get(e));
   });
+});
+
+Handlebars.registerHelper('isAdmin?', function(context, options) {
+  if (localStorage.admin === 'true') {
+    return options.fn(context);
+  }
+});
+Handlebars.registerHelper('isUser?', function(options) {
+  if (localStorage.admin === 'false') {
+    return new Handlebars.SafeString(options.fn(this));
+  }
+});
+Handlebars.registerHelper('setSelected', function(obj, value) {
+  if (obj.get('status') === value) {
+    return new Handlebars.SafeString('selected');
+  }
 });

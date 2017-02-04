@@ -24,8 +24,9 @@ var TicketView = Backbone.View.extend({
     this.cancel();
   },
 
-  insertAfterUpdate: function(e) {
-    this.collection.set(this.collection.models.concat([e]));
+  insertAfterUpdate: function(model,resp) {
+    var ticket = model.set(resp.ticket);
+    this.collection.set(this.collection.models.concat([ticket]));
     this.cancel();
   },
 

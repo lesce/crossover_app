@@ -33,7 +33,7 @@ describe 'manage users' do
       auth_token: admin.authentication_token
     }
 
-    expect(response_json['status']).to eq(403)
+    expect(response.status).to eq(403)
     expect(response_json['message']).to eq('You are not authorized to complete that action.')
   end
 

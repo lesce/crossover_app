@@ -26,11 +26,12 @@ var RegisterView = Backbone.View.extend({
       data: JSON.stringify({ user: registerValues })
     })
     .fail(function(response) {
-      var errors = _.map(response.responseJSON.errors, function(val, key) { return val+" "+key });
+      var errors = _.map(response.responseJSON.errors, function(val, key) { return key+" "+val });
       $('.info').html(new ErrorsView({ model: errors  }).render());
     })
     .success(function(response) {
       localStorage.auth_token = response.auth_token;
+      localStorage.admin = response.admin;
       localStorage.email = response.email;
       app.navigate('tickets', {trigger: true});
     });

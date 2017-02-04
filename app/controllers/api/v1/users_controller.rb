@@ -26,6 +26,6 @@ class Api::V1::UsersController < Api::V1::ApiController
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :role)
+    params.require(:user).permit(:first_name, :last_name, :role, :note)
   end
 end

@@ -4,7 +4,7 @@ class Api::V1::ApiController < ApplicationController
   protected
 
   def authority_forbidden(error)
-    render json: { message: 'You are not authorized to complete that action.', status: 403 }
+    render json: { message: 'You are not authorized to complete that action.' }, status: 403
   end
 
   def authenticate_user_from_token
@@ -17,7 +17,7 @@ class Api::V1::ApiController < ApplicationController
     if user && Devise.secure_compare(user.authentication_token, params[:auth_token])
       sign_in user, store: false
     else
-      render json: { message: 'Access Denied.', status: 401 }
+      render json: { message: 'Access Denied.' }, status: 401
     end
   end
 end

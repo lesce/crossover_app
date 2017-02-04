@@ -4,13 +4,12 @@ class TicketAuthorizer < ApplicationAuthorizer
     true
   end
 
-  # Admins can't create tickets, they can only read and update
   def self.creatable_by?(user)
-    user.default?
+    true
   end
 
   def createable_by?(user)
-    user.default?
+    true
   end
 
   def readable_by?(user)

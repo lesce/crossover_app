@@ -9,6 +9,7 @@ var Router = Backbone.Router.extend({
   },
 
   execute: function(callback, args, name) {
+    // unbind events
     if (typeof loginView !== 'undefined') {
       loginView.unbind();
       loginView.undelegateEvents();
@@ -55,20 +56,13 @@ var Router = Backbone.Router.extend({
     var tickets = new Tickets({ model: Ticket });
     tickets.fetch().success(function(){
       if (typeof ticketsView === 'undefined') {
-        ticketsView = new TicketsView({ collection: tickets.models, model: Ticket });
+        ticketsView = new TicketsView({ collection: tickets, model: Ticket });
       }
       ticketsView.render();
     });
   },
 
   users: function() {
-    var tickets = new Tickets({ model: Ticket });
-    tickets.fetch().success(function(){
-      if (typeof ticketsView === 'undefined') {
-        ticketsView = new TicketsView({ collection: tickets.models, model: Ticket });
-      }
-      ticketsView.render();
-    });
   },
 
 });

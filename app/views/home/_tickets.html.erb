@@ -1,5 +1,5 @@
 <script type="text/template" id="tickets">
-<nav class='navbar navbar-default'>
+<nav class='navbar navbar-inverse'>
   <div class="container-fluid">
     <ul class="nav navbar-nav">
       <li class="active"><a>Tickets <span class="sr-only">(current)</span></a></li>
@@ -11,13 +11,18 @@
   </div>
 </nav>
 <section>
-  <div class="container-fluid">
+  <div class="container-fluid custom-div">
+    <div class="row">
+      <div class="md-8" id="create-ticket">
+      </div>
+      <a class="open-create-ticket btn btn-success"> Create ticket </a>
+    </div>
     <div class="row">
       <!--div class='col-md-9'-->
+        <h1> Submited Tickets </h1>
         <table class='table'>
-          <caption> Submited Tickets </caption>
           <thead>
-            <th> Title </th>
+            <th> Subject </th>
             <th> Content </th>
             <th> Status </th>
             <th> User </th>
@@ -30,7 +35,10 @@
               <td>{{getContent this}}</td>
               <td> {{getStatus this}}</td>
               <td> {{getUsername this}}</td>
-              <td> {{getId this}}</td>
+              <td> 
+                <a class='edit-ticket btn btn-warning' data-id="{{getId this}}">Edit</a>
+                <a class='remove-ticket btn btn-danger' data-id="{{getId this}}">Remove</a>
+              </td>
             </tr>
           {{/each}}
           <tbody>

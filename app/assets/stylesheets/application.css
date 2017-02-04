@@ -14,8 +14,12 @@
  *= require bootstrap
  *= require_self
  */
-table {
-  margin: 20px;
+.custom-div {
+  margin: 50px;
+}
+
+#create-ticket {
+  width: 600px;
 }
 
 .centered {

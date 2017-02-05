@@ -18,6 +18,9 @@
       <div class="md-8" id="create-ticket">
       </div>
       <a class="open-create-ticket btn btn-success"> Create ticket </a>
+      {{# isAdmin? this}}
+        <a href='{{getReportLink}}' class="btn btn-info"> Report </a>
+      {{/isAdmin?}}
     </div>
     <div class="row">
         <h1> Submited Tickets </h1>

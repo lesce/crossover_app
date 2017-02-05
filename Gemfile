@@ -29,6 +29,9 @@ gem 'mysql2'
 gem 'authority'
 # User ActiveModel::Serializer for formating JSON api response
 gem 'active_model_serializers', '~> 0.10.0'
+# Generate pdf files from html
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
 
 group :development, :test do
   # Call 'binding.pry' anywhere in the code to stop execution and get a debugger console

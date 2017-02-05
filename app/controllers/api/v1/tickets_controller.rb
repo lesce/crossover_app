@@ -44,14 +44,9 @@ class Api::V1::TicketsController < Api::V1::ApiController
     end
   end
 
-  def change_status
-    @ticket = Ticket.find_by_id params[:id]
-    authorize_action_for(@ticket)
-    if @ticket.update_attribute(status: params[:status])
-      render json: @ticket, status: 200
-    else
-      render json: @ticket, status: 304
-    end
+  def reports
+    @tickets = Ticket.last_month_closed.all
+    render pdf: 'reports', status: 200
   end
 
   private

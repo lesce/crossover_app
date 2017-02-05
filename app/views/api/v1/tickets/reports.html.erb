@@ -1,0 +1,23 @@
+<div class="row">
+  <h1> Last month closed Tickets </h1>
+  <div class='table-responsive'>
+    <table class='table'>
+      <thead>
+        <th> Subject </th>
+        <th> Content </th>
+        <th> Status </th>
+        <th> User </th>
+      </thead>
+      <tbody>
+        <% @tickets.each do |ticket| %>
+          <tr>
+            <td><%= ticket.title %></td>
+            <td><%= ticket.content %></td>
+            <td><%= ticket.status.humanize %></td>
+            <td><%= ticket.user.name %></td>
+          </tr>
+        <% end %>
+        <tbody>
+    </table>
+  </div>
+</div>

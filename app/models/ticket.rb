@@ -9,6 +9,7 @@
 #  user_id    :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  closed_at  :date
 #
 # Indexes
 #
@@ -34,14 +35,22 @@ class Ticket < ApplicationRecord
 
   # callbacks
   before_save :set_default_status
+  before_save :set_closed_at
 
   # scopes
   scope :filter_by_user_role, -> (user) { user.admin? ? self : where(user_id: user.id) } 
+  scope :last_month_closed, -> { where(status: CLOSED).where(closed_at: (Date.today-1.month)..Date.today) } 
 
   private
 
   def set_default_status
     return if self.status.present?
     self.open!
+  end
+
+  def set_closed_at
+    if closed? && status_changed?
+      self.closed_at = Date.today 
+    end
   end
 end

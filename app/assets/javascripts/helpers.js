@@ -61,3 +61,6 @@ Handlebars.registerHelper('setSelected', function(obj, value) {
     return new Handlebars.SafeString('selected');
   }
 });
+Handlebars.registerHelper('getReportLink', function(val) {
+  return new Handlebars.SafeString('/api/v1/tickets/reports?auth_token='+localStorage.auth_token+'&email='+localStorage.email);
+});

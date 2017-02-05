@@ -8,6 +8,10 @@ class TicketAuthorizer < ApplicationAuthorizer
     true
   end
 
+  def self.viewable_by?(user)
+    user.admin?
+  end
+
   def createable_by?(user)
     true
   end

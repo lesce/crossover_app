@@ -26,6 +26,7 @@ var TicketsView = Backbone.View.extend({
     localStorage.removeItem('email');
     localStorage.removeItem('auth_token');
     localStorage.removeItem('admin');
+    window.location.reload();
     app.navigate('login', { trigger: true});
   },
 

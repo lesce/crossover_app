@@ -17,4 +17,4 @@
 //= require handlebars
 //= require bootstrap.min
 //= require_tree .
-//= stub 'tests'
+//= stub 'init'

@@ -28,7 +28,7 @@
         <table class='table'>
           <thead>
             <th> Subject </th>
-            <th> Content </th>
+            <th> Description </th>
             <th> Status </th>
             <th> User </th>
             <th> Actions </th>
@@ -37,7 +37,7 @@
           {{#each this}}
             <tr>
               <td>{{getTitle this}}</td>
-              <td>{{getContent this}}</td>
+              <td><p class='content'>{{getContent this}}</p></td>
               <td> {{getHumanized_status this}}</td>
               <td> {{getUsername this}}</td>
               <td> 

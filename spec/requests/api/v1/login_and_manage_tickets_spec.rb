@@ -93,16 +93,6 @@ describe "login and query ticket endpoints", :type => :request do
       expect(response_json['message']).to eq('You are not authorized to complete that action.')
     end
 
-    it "gets unauthorized 403 if it tries to change ticket status" do
-      patch change_status_api_v1_ticket_path(ticket), params: { 
-        email: user.email,
-        auth_token: user.authentication_token,
-        status: Ticket::INPROGRESS
-      }
-
-      expect(response.status).to eq(403)
-      expect(response_json['message']).to eq('You are not authorized to complete that action.')
-    end
   end
 
   context "admin" do

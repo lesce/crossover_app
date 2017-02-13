@@ -19,9 +19,12 @@
 }
 
 #create-ticket {
-  width: 600px;
+  width: 700px;
 }
 
+.content {
+  width: 600px;
+}
 .centered {
   position: absolute;
   top: 0;

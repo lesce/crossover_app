@@ -1,38 +1,38 @@
 # README
 
-* Ruby version used
+#### Ruby version used
 
 2.4.0
 
-* System dependencies
+#### System dependencies
 
 wkhtmltopdf (this should be installed by bundle install, if the process fails you need to install it manualy)
 
-* Configuration
+#### Configuration
 
 > change the .env file with the coresponding mysql user/password
 
 `$ bundle install`
 
-* Database creation
+#### Database creation
 
 `$ rake db:create`
 
-* Database initialization
+#### Database initialization
 
 `$ rake db:migrate`
 
 `$ rake db:seed`
 
-* How to run the test suite
+#### How to run the test suite
 
 `$ rspec`
 
-* Start server
+#### Start server
 
 `$ rails s`
 
-* Test login data
+#### Test login data
 
 User credentials
 
